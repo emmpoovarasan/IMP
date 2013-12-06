@@ -5,6 +5,7 @@ package keyworddriven.Scripts;
 
 import static org.junit.Assert.*;
 import junit.framework.TestCase;
+import keyworddriven.UtilFunctions.DefinedValuesFromGetProperties;
 import keyworddriven.UtilFunctions.DriveKeywords;
 import keyworddriven.UtilFunctions.ExtractDataFromExcel;
 
@@ -22,7 +23,8 @@ public class Login extends TestCase{
 	 */
 	@Before
 	public void setUp() throws Exception {
-		ExtractDataFromExcel eExcel = new ExtractDataFromExcel("src\\DataFiles\\KeywordDriven.xls");
+		//"src\\DataFiles\\KeywordDriven.xls"
+		ExtractDataFromExcel eExcel = new ExtractDataFromExcel(DefinedValuesFromGetProperties.getExcelFilePath());
 	}
 
 	@Test
