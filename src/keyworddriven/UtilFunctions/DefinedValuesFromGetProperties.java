@@ -18,7 +18,11 @@ public class DefinedValuesFromGetProperties {
 			current = new java.io.File(".").getCanonicalPath();
 			// until IMP folder
 			System.out.println("current Path is "+current);
-			File f = new File(current);
+			
+			configFilePath = current+"\\src\\DataFiles\\config.properties";
+			
+			// comment automated code.
+			/*File f = new File(current);
 			String[] folders = f.list();
 			for(String folder : folders){
 				if(new File(current+"\\"+folder).isDirectory()){
@@ -53,7 +57,7 @@ public class DefinedValuesFromGetProperties {
 					}
 					
 				}
-			}
+			}*/
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
