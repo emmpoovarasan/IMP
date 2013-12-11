@@ -1,6 +1,7 @@
 package keyworddriven.UtilFunctions;
 
 import junit.framework.Assert;
+import keyworddriven.Logs.GetLogger;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,6 +19,7 @@ public class DriveKeywords {
 				if("open_browser".equalsIgnoreCase(extractedSteps[i][4])){
 					wd = open_browser(extractedSteps[i][7]);
 					System.out.println(extractedSteps[i][3]+" -- "+extractedSteps[i][4]);
+					//GetLogger.fileLogger(extractedSteps[i][3]+" -- "+extractedSteps[i][4]);
 					
 				}else if("navigate_to".equalsIgnoreCase(extractedSteps[i][4])){
 					navigate_to(wd,extractedSteps[i][7]);
@@ -36,7 +38,7 @@ public class DriveKeywords {
 					System.out.println(extractedSteps[i][3]+" -- "+extractedSteps[i][4]);
 					
 				}else if("verify_element".equalsIgnoreCase(extractedSteps[i][4])){
-					verify_element(wd,extractedSteps[i][5],extractedSteps[i][6]);
+					verify_element(wd,extractedSteps[i][5],extractedSteps[i][6],extractedSteps[i][8]);
 					System.out.println(extractedSteps[i][3]+" -- "+extractedSteps[i][4]);
 					
 				}else if("close_browser".equalsIgnoreCase(extractedSteps[i][4])){
@@ -55,12 +57,14 @@ public class DriveKeywords {
 	}
 
 	public static void verify_element(WebDriver wd, String locate,
-			String LocString) {
+			String LocString, String ExpectedResult) {
 		
 		if("id".equalsIgnoreCase(locate)){
 			String ActualOutput = wd.findElement(By.id(LocString)).getText();
 			try {
-				if("Invalid password".equalsIgnoreCase(ActualOutput)){
+				Assert.assertEquals(ExpectedResult, ActualOutput);
+				System.out.println("Expected Output: "+ExpectedResult+" | Actual Output: "+ActualOutput);
+				/*if("Invalid password".equalsIgnoreCase(ActualOutput)){
 					org.junit.Assert.assertEquals("Invalid password", ActualOutput);
 					System.out.println("Expected Output: Invalid password | Actual Output: "+ActualOutput);
 				}else if("Please enter your email and password".equalsIgnoreCase(ActualOutput)){
@@ -71,15 +75,17 @@ public class DriveKeywords {
 					System.out.println("Expected Output: Wrong email or password | Actual Output: "+ActualOutput);
 				}else{
 					System.out.println("Actual Output: "+ActualOutput);
-				}
+				}*/
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
 		}
 		if("xpath".equalsIgnoreCase(locate)){
+			String ActualResult= wd.findElement(By.xpath(LocString)).getText();
 			try {
-				org.junit.Assert.assertEquals("Profile Completeness", wd.findElement(By.xpath(LocString)).getText());
-				System.out.println(wd.findElement(By.xpath(LocString)).getText());
+				Assert.assertEquals(ExpectedResult, ActualResult);
+				//org.junit.Assert.assertEquals("Profile Completeness", wd.findElement(By.xpath(LocString)).getText());
+				System.out.println("Expected Output: "+ExpectedResult+" | Actual Output: "+ActualResult);
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
@@ -89,14 +95,17 @@ public class DriveKeywords {
 			String actualOutput = null;
 			actualOutput = wd.findElement(By.cssSelector(LocString)).getText();
 			try {
-				if("Create an account".equalsIgnoreCase(actualOutput)){
+				
+				Assert.assertEquals(ExpectedResult, actualOutput);
+				System.out.println("Expected Output: "+ExpectedResult+" | Actual Output: "+actualOutput);
+				/*if("Create an account".equalsIgnoreCase(actualOutput)){
 					Assert.assertEquals("Create an account", actualOutput);
 					System.out.println("Expected : Create an account --- Actual : "+actualOutput);	
 				}
 				if("Try EasyMedMobile.com for free during 30 days (1/2)".equalsIgnoreCase(actualOutput)){
 					Assert.assertEquals("Try EasyMedMobile.com for free during 30 days (1/2)", actualOutput);
 					System.out.println("Expected : Create an account --- Actual : "+actualOutput);	
-				}
+				}*/
 				
 			} catch (Exception e) {
 				// TODO: handle exception

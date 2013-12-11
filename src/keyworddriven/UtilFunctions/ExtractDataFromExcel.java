@@ -17,7 +17,7 @@ public class ExtractDataFromExcel {
 		try {
 			System.out.println("Test "+ getClass().getName());
 			wrkBook = Workbook.getWorkbook(new File(filePath));
-			GetLogger.fileLogger("Selected correct file");
+			GetLogger.fileLogger("Selected correct file"+ getClass().getName());
 		} catch (BiffException e) {
 			System.out.println("BiffException -- "+e.getMessage());
 			GetLogger.fileLogger(e.getMessage());
