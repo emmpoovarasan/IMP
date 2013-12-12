@@ -11,7 +11,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 
 
 public class DriveKeywords {
-	static WebDriver wd = null;
+	static WebDriver wd;
 	public static void doDriveKeywords(String[][] extractedSteps){
 		System.out.println("Testing doDriveKeywords ");
 		for(int i = 1; i< extractedSteps.length; i++){
@@ -22,6 +22,7 @@ public class DriveKeywords {
 					//GetLogger.fileLogger(extractedSteps[i][3]+" -- "+extractedSteps[i][4]);
 					
 				}else if("navigate_to".equalsIgnoreCase(extractedSteps[i][4])){
+					System.out.println(extractedSteps[i][3]+" -- "+extractedSteps[i][4]);
 					navigate_to(wd,extractedSteps[i][7]);
 					System.out.println(extractedSteps[i][3]+" -- "+extractedSteps[i][4]);
 					
@@ -156,6 +157,7 @@ public class DriveKeywords {
 	}
 
 	public static void navigate_to(WebDriver wd, String url) {
+		System.out.println("Tested : "+url);
 		wd.get(url);
 		
 	}
