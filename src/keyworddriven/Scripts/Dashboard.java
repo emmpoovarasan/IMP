@@ -4,6 +4,7 @@
 package keyworddriven.Scripts;
 
 import static org.junit.Assert.*;
+import junit.framework.TestCase;
 import keyworddriven.UtilFunctions.DefinedValuesFromGetProperties;
 import keyworddriven.UtilFunctions.DriveKeywords;
 import keyworddriven.UtilFunctions.ExtractDataFromExcel;
@@ -15,7 +16,7 @@ import org.junit.Test;
  * @author POO
  *
  */
-public class Dashboard {
+public class Dashboard extends TestCase {
 
 	/**
 	 * @throws java.lang.Exception
@@ -26,7 +27,7 @@ public class Dashboard {
 	}
 
 	@Test
-	public void test() {
+	public void testDashboard() {
 		DriveKeywords.doDriveKeywords(ExtractDataFromExcel.getDataFromExcelSheet("Sheet2"));
 		//fail("Not yet implemented");
 	}

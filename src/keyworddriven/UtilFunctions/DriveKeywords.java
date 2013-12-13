@@ -22,7 +22,7 @@ public class DriveKeywords {
 					//GetLogger.fileLogger(extractedSteps[i][3]+" -- "+extractedSteps[i][4]);
 					
 				}else if("navigate_to".equalsIgnoreCase(extractedSteps[i][4])){
-					System.out.println(extractedSteps[i][3]+" -- "+extractedSteps[i][4]);
+					//System.out.println(extractedSteps[i][3]+" -- "+extractedSteps[i][4]);
 					navigate_to(wd,extractedSteps[i][7]);
 					System.out.println(extractedSteps[i][3]+" -- "+extractedSteps[i][4]);
 					
@@ -65,18 +65,6 @@ public class DriveKeywords {
 			try {
 				Assert.assertEquals(ExpectedResult, ActualOutput);
 				System.out.println("Expected Output: "+ExpectedResult+" | Actual Output: "+ActualOutput);
-				/*if("Invalid password".equalsIgnoreCase(ActualOutput)){
-					org.junit.Assert.assertEquals("Invalid password", ActualOutput);
-					System.out.println("Expected Output: Invalid password | Actual Output: "+ActualOutput);
-				}else if("Please enter your email and password".equalsIgnoreCase(ActualOutput)){
-					org.junit.Assert.assertEquals("Please enter your email and password", ActualOutput);
-					System.out.println("Expected Output: Please enter your email and password | Actual Output: "+ActualOutput);
-				}else if("Wrong email or password".equalsIgnoreCase(ActualOutput)){
-					org.junit.Assert.assertEquals("Wrong email or password", ActualOutput);
-					System.out.println("Expected Output: Wrong email or password | Actual Output: "+ActualOutput);
-				}else{
-					System.out.println("Actual Output: "+ActualOutput);
-				}*/
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
@@ -85,34 +73,62 @@ public class DriveKeywords {
 			String ActualResult= wd.findElement(By.xpath(LocString)).getText();
 			try {
 				Assert.assertEquals(ExpectedResult, ActualResult);
-				//org.junit.Assert.assertEquals("Profile Completeness", wd.findElement(By.xpath(LocString)).getText());
 				System.out.println("Expected Output: "+ExpectedResult+" | Actual Output: "+ActualResult);
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
 		}
 		if("cssSelector".equalsIgnoreCase(locate)){
-			//System.out.println("Executed cssSelector : "+locate);
+
 			String actualOutput = null;
 			actualOutput = wd.findElement(By.cssSelector(LocString)).getText();
 			try {
 				
 				Assert.assertEquals(ExpectedResult, actualOutput);
 				System.out.println("Expected Output: "+ExpectedResult+" | Actual Output: "+actualOutput);
-				/*if("Create an account".equalsIgnoreCase(actualOutput)){
-					Assert.assertEquals("Create an account", actualOutput);
-					System.out.println("Expected : Create an account --- Actual : "+actualOutput);	
-				}
-				if("Try EasyMedMobile.com for free during 30 days (1/2)".equalsIgnoreCase(actualOutput)){
-					Assert.assertEquals("Try EasyMedMobile.com for free during 30 days (1/2)", actualOutput);
-					System.out.println("Expected : Create an account --- Actual : "+actualOutput);	
-				}*/
 				
 			} catch (Exception e) {
-				// TODO: handle exception
 				System.out.println(e.getMessage());
 			}
 			
+		}
+		if("linkText".equalsIgnoreCase(locate)){
+			String actualOutput = null;
+			actualOutput = wd.findElement(By.linkText(LocString)).getText();
+			try {
+				Assert.assertEquals(ExpectedResult, actualOutput);
+				System.out.println("Expected Output: "+ExpectedResult+" | Actual Output: "+actualOutput);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			
+		}
+		if("className".equalsIgnoreCase(locate)){
+			String ActualOutput = wd.findElement(By.className(LocString)).getText();
+			try {
+				Assert.assertEquals(ExpectedResult, ActualOutput);
+				System.out.println("Expected Output: "+ExpectedResult+" | Actual Output: "+ActualOutput);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		if("name".equalsIgnoreCase(locate)){
+			String ActualOutput = wd.findElement(By.name(LocString)).getText();
+			try {
+				Assert.assertEquals(ExpectedResult, ActualOutput);
+				System.out.println("Expected Output: "+ExpectedResult+" | Actual Output: "+ActualOutput);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		if("partialLinkText".equalsIgnoreCase(locate)){
+			String ActualOutput = wd.findElement(By.partialLinkText(LocString)).getText();
+			try {
+				Assert.assertEquals(ExpectedResult, ActualOutput);
+				System.out.println("Expected Output: "+ExpectedResult+" | Actual Output: "+ActualOutput);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
 		}
 		
 	}
@@ -157,7 +173,7 @@ public class DriveKeywords {
 	}
 
 	public static void navigate_to(WebDriver wd, String url) {
-		System.out.println("Tested : "+url);
+		//System.out.println("Tested : "+url);
 		wd.get(url);
 		
 	}
