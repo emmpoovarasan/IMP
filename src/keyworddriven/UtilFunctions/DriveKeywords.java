@@ -1,5 +1,8 @@
 package keyworddriven.UtilFunctions;
 
+import java.util.Iterator;
+import java.util.Set;
+
 import junit.framework.Assert;
 import keyworddriven.Logs.GetLogger;
 
@@ -45,11 +48,38 @@ public class DriveKeywords {
 				}else if("close_browser".equalsIgnoreCase(extractedSteps[i][4])){
 					close_browser(wd);
 					System.out.println(extractedSteps[i][3]+" -- "+extractedSteps[i][4]);
+				}else if("switch_window".equalsIgnoreCase(extractedSteps[i][4])){
+					switch_window(wd);
 				}else{
 					System.out.println(extractedSteps[i][3]+" -- "+"else--"+extractedSteps[i][4]);
 				}
 			}
 		}
+	}
+
+	public static void switch_window(WebDriver wd2) {
+		Set<String> windowId = wd2.getWindowHandles();    // get  window id of current window
+        Iterator<String> itererator = windowId.iterator();   
+        //String mainWinID = itererator.next();
+        //String  newAdwinID = itererator.next();
+        String  newAdwinID = new String();
+        while (itererator.hasNext()) {
+			newAdwinID = itererator.next();
+		}
+        try {
+            wd2.switchTo().window(newAdwinID);
+            System.out.println(wd2.getTitle());
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+       /* wd2.switchTo().window(mainWinID);
+        System.out.println(wd2.getTitle());
+        Thread.sleep(2000);*/
+
+		
 	}
 
 	public static void close_browser(WebDriver wd) {
@@ -145,6 +175,9 @@ public class DriveKeywords {
 		}
 		if("id".equalsIgnoreCase(locate)){
 			wd.findElement(By.id(locString)).click();
+		}
+		if("xpath".equalsIgnoreCase(locate)){
+			wd.findElement(By.xpath(locString)).click();
 		}
 		
 	}
