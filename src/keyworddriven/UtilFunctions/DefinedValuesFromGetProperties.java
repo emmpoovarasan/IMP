@@ -7,21 +7,69 @@ import java.util.Properties;
 
 public class DefinedValuesFromGetProperties {
 	
-	public static String getExcelFilePath(){
-		String filePath = null;
+	private static String getPropertiesFilePath(){
 		String configFilePath = null;
-		
-		Properties prop = new Properties();
-		
 		String current;
 		try {
 			current = new java.io.File(".").getCanonicalPath();
 			// until IMP folder
 			System.out.println("current Path is "+current);
-			
 			configFilePath = current+"\\src\\DataFiles\\config.properties";
+			// if needed use the below comment section here.
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			System.out.println(e1.getMessage());
+			configFilePath = null;
+		}
+		return configFilePath;
+	}
+	
+	public static String getExcelFilePath(){
+		String filePath = null;
+		Properties prop = new Properties();
+		try {
+			//"C:\\Users\\POO\\git\\IMP\\src\\DataFiles\\config.properties"
+			prop.load(new FileInputStream(getPropertiesFilePath()));
+			filePath = prop.getProperty("ExcelFilePath");
+			System.out.println(filePath);
 			
-			// comment automated code.
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return filePath;
+	}
+	
+	public static String getLoginSheetName(){
+		String loginSheetName = null;
+		Properties prop = new Properties();
+		try {
+			prop.load(new FileInputStream(getPropertiesFilePath()));
+			loginSheetName = prop.getProperty("loginSheetName");
+			System.out.println(loginSheetName);
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return loginSheetName;
+	}
+	
+	public static String getDashboardSheetName(){
+		String dashboardSheetName = null;
+		Properties prop = new Properties();
+		try {
+			prop.load(new FileInputStream(getPropertiesFilePath()));
+			dashboardSheetName = prop.getProperty("dashboardSheetName");
+			System.out.println(dashboardSheetName);
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return dashboardSheetName;
+	}
+
+}
+
+//comment automated code.
 			/*File f = new File(current);
 			String[] folders = f.list();
 			for(String folder : folders){
@@ -58,25 +106,3 @@ public class DefinedValuesFromGetProperties {
 					
 				}
 			}*/
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		
-		
-		try {
-			//"C:\\Users\\POO\\git\\IMP\\src\\DataFiles\\config.properties"
-			prop.load(new FileInputStream(configFilePath));
-			
-			filePath = prop.getProperty("ExcelFilePath");
-			System.out.println(filePath);
-			
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		
-		return filePath;
-	}
-
-}

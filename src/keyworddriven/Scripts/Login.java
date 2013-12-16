@@ -31,7 +31,7 @@ public class Login extends TestCase{
 
 	@Test
 	public void testLogin() {
-		DriveKeywords.doDriveKeywords(ExtractDataFromExcel.getDataFromExcelSheet("Sheet1"));
+		DriveKeywords.doDriveKeywords(ExtractDataFromExcel.getDataFromExcelSheet(DefinedValuesFromGetProperties.getLoginSheetName()));
 		GetLogger.fileLogger("Got Sheet Name : "+getClass().getName());
 		//fail("Not yet implemented");
 	}

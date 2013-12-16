@@ -19,7 +19,7 @@ public class RunTestSuite {
 	
 	@Test
 	public void testRunTestSuite(){
-		//System.out.println(suite().countTestCases());
+		System.out.println("Total no of test cases are "+suite().countTestCases());
 		suite();
 	}
 	

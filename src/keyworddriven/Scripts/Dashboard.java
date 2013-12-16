@@ -28,7 +28,7 @@ public class Dashboard extends TestCase {
 
 	@Test
 	public void testDashboard() {
-		DriveKeywords.doDriveKeywords(ExtractDataFromExcel.getDataFromExcelSheet("Sheet2"));
+		DriveKeywords.doDriveKeywords(ExtractDataFromExcel.getDataFromExcelSheet(DefinedValuesFromGetProperties.getDashboardSheetName()));
 		//fail("Not yet implemented");
 	}
 
