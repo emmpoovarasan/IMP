@@ -7,10 +7,12 @@ import junit.framework.Assert;
 import keyworddriven.Logs.GetLogger;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.ui.Select;
 
 
 public class DriveKeywords {
@@ -50,11 +52,38 @@ public class DriveKeywords {
 					System.out.println(extractedSteps[i][3]+" -- "+extractedSteps[i][4]);
 				}else if("switch_window".equalsIgnoreCase(extractedSteps[i][4])){
 					switch_window(wd);
+				}else if("store_value_cookie".equalsIgnoreCase(extractedSteps[i][4])){
+					store_value_cookie(wd,extractedSteps[i][5],extractedSteps[i][6]);
 				}else{
 					System.out.println(extractedSteps[i][3]+" -- "+"else--"+extractedSteps[i][4]);
 				}
 			}
 		}
+	}
+
+	private static void store_value_cookie(WebDriver wd2, String locate, String LocString) {
+		wd2.manage().deleteCookieNamed(LocString);
+		Select sel;
+		String value = new String();
+		if("Select".equalsIgnoreCase(wd2.findElement(By.name(LocString)).getTagName())){
+			sel = new Select(wd2.findElement(By.name(LocString)));
+			value = sel.getFirstSelectedOption().getText();
+		}else if("input".equalsIgnoreCase(wd2.findElement(By.name(LocString)).getTagName())){
+			value = wd2.findElement(By.name(LocString)).getText();
+		}
+		Cookie c = new Cookie(LocString, value);
+		
+		wd2.manage().addCookie(c);
+		
+		// display all cookies value
+		
+		System.out.println("Load cookie name : "+wd2.manage().getCookieNamed(LocString));
+		
+		/*Set<Cookie> allCookies = wd2.manage().getCookies();
+		for(Cookie loadedCookie : allCookies){
+			System.out.println("Load Cookie name : "+ loadedCookie.getName() + " -- Load Cookie value : "+loadedCookie.getValue());
+		}*/
+		
 	}
 
 	public static void switch_window(WebDriver wd2) {
@@ -68,8 +97,8 @@ public class DriveKeywords {
 		}
         try {
             wd2.switchTo().window(newAdwinID);
-            System.out.println(wd2.getTitle());
-			Thread.sleep(3000);
+            Thread.sleep(3000);
+            System.out.println("After Switch window title : "+wd2.getTitle());
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
