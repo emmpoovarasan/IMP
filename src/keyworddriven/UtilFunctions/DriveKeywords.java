@@ -52,13 +52,39 @@ public class DriveKeywords {
 					System.out.println(extractedSteps[i][3]+" -- "+extractedSteps[i][4]);
 				}else if("switch_window".equalsIgnoreCase(extractedSteps[i][4])){
 					switch_window(wd);
+					System.out.println(extractedSteps[i][3]+" -- "+extractedSteps[i][4]);
 				}else if("store_value_cookie".equalsIgnoreCase(extractedSteps[i][4])){
 					store_value_cookie(wd,extractedSteps[i][5],extractedSteps[i][6]);
+					System.out.println(extractedSteps[i][3]+" -- "+extractedSteps[i][4]);
+				}else if("send_keys_option".equalsIgnoreCase(extractedSteps[i][4])){
+					send_keys_option(wd,extractedSteps[i][5],extractedSteps[i][6],extractedSteps[i][7]);
+					System.out.println(extractedSteps[i][3]+" -- "+extractedSteps[i][4]);
 				}else{
 					System.out.println(extractedSteps[i][3]+" -- "+"else--"+extractedSteps[i][4]);
 				}
 			}
 		}
+	}
+
+	private static void send_keys_option(WebDriver wd2, String locate,
+			String locString, String data) {
+		//use selectByValue if option value available
+		if("xpath".equalsIgnoreCase(locate)){
+			new Select(wd.findElement(By.xpath(locString))).selectByVisibleText(data);
+		}
+		if("name".equalsIgnoreCase(locate)){
+			new Select(wd.findElement(By.name(locString))).selectByVisibleText(data);
+		}
+		if("id".equalsIgnoreCase(locate)){
+			new Select(wd.findElement(By.id(locString))).selectByVisibleText(data);
+		}
+		if("className".equalsIgnoreCase(locate)){
+			new Select(wd.findElement(By.className(locString))).selectByVisibleText(data);
+		}
+		if("cssSelector".equalsIgnoreCase(locate)){
+			new Select(wd.findElement(By.cssSelector(locString))).selectByVisibleText(data);
+		}
+		
 	}
 
 	private static void store_value_cookie(WebDriver wd2, String locate, String LocString) {
@@ -208,23 +234,65 @@ public class DriveKeywords {
 		if("xpath".equalsIgnoreCase(locate)){
 			wd.findElement(By.xpath(locString)).click();
 		}
+		if("className".equalsIgnoreCase(locate)){
+			wd.findElement(By.className(locString)).click();
+		}
+		if("cssSelector".equalsIgnoreCase(locate)){
+			wd.findElement(By.cssSelector(locString)).click();
+		}
+		if("partialLinkText".equalsIgnoreCase(locate)){
+			wd.findElement(By.partialLinkText(locString)).click();
+		}
 		
 	}
 
 	public static void send_keys(WebDriver wd, String locate, String locString,
 			String data) {
 		if("xpath".equalsIgnoreCase(locate)){
-			wd.findElement(By.xpath(locString)).clear();
-			wd.findElement(By.xpath(locString)).sendKeys(data);
+			if(wd.findElement(By.xpath(locString)).isDisplayed()==true){
+				wd.findElement(By.xpath(locString)).clear();
+				wd.findElement(By.xpath(locString)).sendKeys(data);
+			}else{
+				System.out.println("Not available for this element of "+locString);
+			}
+			
 		}
 		if("name".equalsIgnoreCase(locate)){
-			wd.findElement(By.name(locString)).clear();
-			wd.findElement(By.name(locString)).sendKeys(data);
+			if(wd.findElement(By.name(locString)).isDisplayed()==true){
+				wd.findElement(By.name(locString)).clear();
+				wd.findElement(By.name(locString)).sendKeys(data);	
+			}else{
+				System.out.println("Not available for this element of "+locString);
+			}
+			
 			
 		}
 		if("id".equalsIgnoreCase(locate)){
-			wd.findElement(By.id(locString)).clear();
-			wd.findElement(By.id(locString)).sendKeys(data);
+			if(wd.findElement(By.id(locString)).isDisplayed()==true) {
+				wd.findElement(By.id(locString)).clear();
+				wd.findElement(By.id(locString)).sendKeys(data);	
+			} else {
+				System.out.println("Not available for this element of "+locString);
+			}
+			
+		}
+		if("className".equalsIgnoreCase(locate)){
+			if(wd.findElement(By.className(locString)).isDisplayed()==true) {
+				wd.findElement(By.className(locString)).clear();
+				wd.findElement(By.className(locString)).sendKeys(data);	
+			} else {
+				System.out.println("Not available for this element of "+locString);
+			}
+			
+		}
+		if("cssSelector".equalsIgnoreCase(locate)){
+			if(wd.findElement(By.cssSelector(locString)).isDisplayed()==true) {
+				wd.findElement(By.cssSelector(locString)).clear();
+				wd.findElement(By.cssSelector(locString)).sendKeys(data);	
+			} else {
+				System.out.println("Not available for this element of "+locString);
+			}
+			
 		}
 		
 	}
