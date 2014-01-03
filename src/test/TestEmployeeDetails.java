@@ -20,6 +20,6 @@ public class TestEmployeeDetails {
 	  empDetails.setAge(31);
 	  empDetails.setMonthlySalary(31000);
 	  double salary = empBusiLogic.calculateYearlySalary(empDetails);
-	  Assert.assertEquals(420000, salary);
+	  Assert.assertEquals(372000.0, salary);
   }
 }
