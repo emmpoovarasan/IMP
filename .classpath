@@ -2,10 +2,11 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="libs/jxl.jar"/>
 	<classpathentry kind="lib" path="libs/apache-mime4j-0.6.jar"/>
 	<classpathentry kind="lib" path="libs/bsh-1.3.0.jar"/>
 	<classpathentry kind="lib" path="libs/cglib-nodep-2.1_3.jar"/>
-	<classpathentry kind="lib" path="libs/commons-codec-1.6.jar"/>
+	<classpathentry kind="lib" path="libs/commons-codec-1.8.jar"/>
 	<classpathentry kind="lib" path="libs/commons-collections-3.2.1.jar"/>
 	<classpathentry kind="lib" path="libs/commons-exec-1.1.jar"/>
 	<classpathentry kind="lib" path="libs/commons-io-2.2.jar"/>
@@ -34,14 +35,13 @@
 	<classpathentry kind="lib" path="libs/phantomjsdriver-1.0.4.jar"/>
 	<classpathentry kind="lib" path="libs/protobuf-java-2.4.1.jar"/>
 	<classpathentry kind="lib" path="libs/sac-1.3.jar"/>
-	<classpathentry kind="lib" path="libs/selenium-java-2.37.0-srcs.jar"/>
-	<classpathentry kind="lib" path="libs/selenium-java-2.37.0.jar"/>
-	<classpathentry kind="lib" path="libs/selenium-server-standalone-2.37.0.jar"/>
+	<classpathentry kind="lib" path="libs/selenium-java-2.39.0.jar"/>
+	<classpathentry kind="lib" path="libs/selenium-server-standalone-2.39.0.jar"/>
 	<classpathentry kind="lib" path="libs/serializer-2.7.1.jar"/>
 	<classpathentry kind="lib" path="libs/testng-6.8.5.jar"/>
 	<classpathentry kind="lib" path="libs/xalan-2.7.1.jar"/>
 	<classpathentry kind="lib" path="libs/xercesImpl-2.10.0.jar"/>
 	<classpathentry kind="lib" path="libs/xml-apis-1.4.01.jar"/>
-	<classpathentry kind="lib" path="libs/jxl.jar"/>
+	<classpathentry kind="lib" path="libs/selenium-java-2.39.0-srcs.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
