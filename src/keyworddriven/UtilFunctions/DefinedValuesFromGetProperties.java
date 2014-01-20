@@ -66,6 +66,20 @@ public class DefinedValuesFromGetProperties {
 		}
 		return dashboardSheetName;
 	}
+	
+	public static String getDriverName(String KeyName){
+		String driverNamePath = null;
+		Properties prop = new Properties();
+		try {
+			prop.load(new FileInputStream(getPropertiesFilePath()));
+			driverNamePath = prop.getProperty(KeyName);
+			System.out.println(driverNamePath);
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return driverNamePath;
+	}
 
 }
 
