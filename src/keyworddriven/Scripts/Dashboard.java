@@ -3,7 +3,6 @@
  */
 package keyworddriven.Scripts;
 
-import static org.junit.Assert.*;
 import junit.framework.TestCase;
 import keyworddriven.UtilFunctions.DefinedValuesFromGetProperties;
 import keyworddriven.UtilFunctions.DriveKeywords;
@@ -23,6 +22,7 @@ public class Dashboard extends TestCase {
 	 */
 	@Before
 	public void setUp() throws Exception {
+		@SuppressWarnings("unused")
 		ExtractDataFromExcel eExcel = new ExtractDataFromExcel(DefinedValuesFromGetProperties.getExcelFilePath());
 	}
 

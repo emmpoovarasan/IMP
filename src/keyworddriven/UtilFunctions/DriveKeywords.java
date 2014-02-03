@@ -4,8 +4,6 @@ import java.util.Iterator;
 import java.util.Set;
 
 import junit.framework.Assert;
-import keyworddriven.Logs.GetLogger;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +13,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.Select;
 
 
+@SuppressWarnings("deprecation")
 public class DriveKeywords {
 	static WebDriver wd;
 	public static void doDriveKeywords(String[][] extractedSteps){
